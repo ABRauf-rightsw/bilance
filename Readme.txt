@@ -1,0 +1,5 @@
+#424048 (Dark Gray)
+#45586C (Muted Blue-Gray)
+#B0CEE2 (Light Blue)
+#A63E1B (Rusty Red)
+#E95D2C (Bright Orange-Red)
