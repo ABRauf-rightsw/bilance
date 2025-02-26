@@ -206,4 +206,42 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  // Initialize Swiper
+  const swiper = new Swiper('.client-review-slider', {
+    loop: true,
+    autoplay: {
+      delay: 10000, // 10 seconds
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  // Modal functionality
+  const modal = document.getElementById("videoModal");
+  const videoPlayer = document.getElementById("videoPlayer");
+  const closeModal = document.getElementsByClassName("close")[0];
+
+  document.querySelectorAll('.btn-watch-video').forEach(button => {
+    button.addEventListener('click', function() {
+      const videoUrl = this.getAttribute('data-video-url');
+      videoPlayer.src = videoUrl; // Set the video URL
+      modal.style.display = "block"; // Show the modal
+    });
+  });
+
+  closeModal.onclick = function() {
+    modal.style.display = "none"; // Close the modal
+    videoPlayer.src = ""; // Stop the video
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none"; // Close the modal
+      videoPlayer.src = ""; // Stop the video
+    }
+  }
+
 })();
