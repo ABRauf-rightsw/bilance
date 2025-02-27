@@ -304,7 +304,7 @@
     </section><!-- /Features Section -->
 
 
-    <!-- Stats Section -->
+    <!-- 
     <section id="stats" class="stats section light-background">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
@@ -318,7 +318,7 @@
                 <p>Satisfied Agents</p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item d-flex align-items-center w-100 h-100">
@@ -329,7 +329,7 @@
                 <p>Calls Per Month</p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item d-flex align-items-center w-100 h-100">
@@ -340,7 +340,7 @@
                 <p>Leads Generated</p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item d-flex align-items-center w-100 h-100">
@@ -351,12 +351,64 @@
                 <p>Expert Callers</p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
         </div>
       </div>
-    </section><!-- /Stats Section -->
+    </section> -->
 
+
+    <section id="stats" class="stats section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <!-- Heading -->
+        <h2 class="fw-bold mb-4">Performance Statistics</h2>
+    
+        <!-- Filter Box -->
+        <div class="filter-box">
+          <label for="filter" class="fw-bold">Select Month:</label>
+          <select id="filter" onchange="updateStats()">
+            <option value="latest">Last Month</option>
+            <option value="january">January 2024</option>
+            <option value="february">February 2024</option>
+            <option value="march">March 2024</option>
+            <option value="april">April 2024</option>
+            <option value="may">May 2024</option>
+            <option value="june">June 2024</option>
+            <option value="all">All 2024</option>
+          </select>
+        </div>
+    
+        <!-- Stats Row -->
+        <div class="row gy-4">
+          
+          <!-- Calls Per Month -->
+          <div class="col-lg-6">
+            <div class="stats-item w-100">
+              <i class="bi bi-headset color-blue"></i>
+              <div>
+                <span id="appointments" class="purecounter">300</span>
+                <p>Appointments Per Month</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Leads Generated -->
+          <div class="col-lg-6">
+            <div class="stats-item w-100">
+              <i class="bi bi-house-check color-orange"></i>
+              <div>
+                <span id="leads" class="purecounter">2500</span>
+                <p>Leads Generated</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+    
+    
 
     <!-- Client Section -->
     <section id="gallery" class="gallery section">
@@ -586,9 +638,6 @@
       </div>
     </section><!-- /Testimonials Section -->
 
-  
-
-
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -645,7 +694,7 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
-          <div class="col-lg-6 ">
+          <div class="col-lg-12 ">
             <div class="row gy-4">
 
               <div class="col-lg-12">
@@ -677,39 +726,6 @@
 
             </div>
           </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-              data-aos-delay="500">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
 
         </div>
 
@@ -809,6 +825,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/filter.js"></script>
 
 </body>
 
