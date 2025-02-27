@@ -72,7 +72,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="cta-btn" href="#contact">Book Free Consultation</a>
+      <a class="cta-btn" href="#contact">Schedule Appointment</a>
 
     </div>
   </header>
@@ -826,6 +826,40 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/filter.js"></script>
+
+  <!-- Modal for Booking Free Consultation -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Schedule Appointment</h2>
+      <div id="bookingAlert" class="alert alert-dismissible fade show" role="alert" style="display: none;">
+        <span id="bookingAlertMessage"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <div>
+        <label for="datePicker">Select a Date:</label>
+        <input type="date" id="datePicker" min="" required>
+      </div>
+      <div id="timeSlots" style="display: none;">
+        <label for="timeSlot">Select a Time Slot:</label>
+        <select id="timeSlot" required>
+          <option value="">--Select a Time Slot--</option>
+          <option value="9:00 AM">9:00 AM</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="1:00 PM">1:00 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+        </select>
+      </div>
+      <div id="userDetails" style="display: none;">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <button id="submitBooking">Submit</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 

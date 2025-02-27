@@ -1,5 +1,3 @@
-
-
 (function() {
   "use strict";
 
@@ -213,29 +211,112 @@
     },
   });
 
-  // Modal functionality
-  const modal = document.getElementById("videoModal");
-  const videoPlayer = document.getElementById("videoPlayer");
-  const closeModal = document.getElementsByClassName("close")[0];
+  document.addEventListener('DOMContentLoaded', function () {
+    // Modal Elements
+    const bookingModal = document.getElementById("bookingModal");
+    const closeModal = document.querySelector(".close");
+    const bookConsultationBtn = document.querySelector(".cta-btn");
+    const datePicker = document.getElementById("datePicker");
+    const timeSlots = document.getElementById("timeSlots");
+    const userDetails = document.getElementById("userDetails");
+    const submitBooking = document.getElementById("submitBooking");
+    const timeSlot = document.getElementById("timeSlot");
 
-  document.querySelectorAll('.btn-watch-video').forEach(button => {
-    button.addEventListener('click', function() {
-      const videoUrl = this.getAttribute('data-video-url');
-      videoPlayer.src = videoUrl; // Set the video URL
-      modal.style.display = "block"; // Show the modal
-    });
-  });
+    // Bootstrap Alert Elements
+    const bookingAlert = document.getElementById("bookingAlert");
+    const bookingAlertMessage = document.getElementById("bookingAlertMessage");
 
-  closeModal.onclick = function() {
-    modal.style.display = "none"; // Close the modal
-    videoPlayer.src = ""; // Stop the video
-  }
+    // Function to show Bootstrap Alert
+    function showBootstrapAlert(message, type = "success") {
+      bookingAlertMessage.innerHTML = message;
+      bookingAlert.className = `alert alert-${type} alert-dismissible fade show`;
+      bookingAlert.style.display = "block";
 
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none"; // Close the modal
-      videoPlayer.src = ""; // Stop the video
+      // Auto-hide alert after 4 seconds
+      setTimeout(() => {
+        bookingAlert.style.display = "none";
+      }, 4000);
     }
-  }
 
+    // Function to show the modal
+    function showModal() {
+      if (bookingModal) {
+        bookingModal.style.display = "flex";
+      }
+    }
+
+    // Open modal
+    if (bookConsultationBtn) {
+      bookConsultationBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        showModal();
+      });
+    }
+
+    // Close modal
+    if (closeModal) {
+      closeModal.addEventListener("click", function () {
+        bookingModal.style.display = "none";
+      });
+    }
+
+    window.addEventListener("click", function (event) {
+      if (event.target === bookingModal) {
+        bookingModal.style.display = "none";
+      }
+    });
+
+    // Date selection functionality
+    if (datePicker) {
+      datePicker.addEventListener("change", function () {
+        const selectedDate = new Date(this.value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time for accurate comparison
+
+        if (selectedDate < today) {
+          showBootstrapAlert("You cannot select a past date.", "danger");
+          this.value = "";
+          timeSlots.style.display = "none";
+          userDetails.style.display = "none";
+          return;
+        }
+
+        timeSlots.style.display = "block";
+      });
+    }
+
+    // Time slot selection functionality
+    if (timeSlot) {
+      timeSlot.addEventListener("change", function () {
+        userDetails.style.display = this.value ? "block" : "none";
+      });
+    }
+
+    // Submit booking functionality
+    if (submitBooking) {
+      submitBooking.addEventListener("click", function () {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+        const selectedDate = datePicker.value;
+        const selectedTime = timeSlot.value;
+
+        if (!name || !email || !selectedDate || !selectedTime) {
+          showBootstrapAlert("Please fill in all required fields!", "danger");
+          return;
+        }
+
+        showBootstrapAlert(
+          `Booking submitted for ${name} on ${selectedDate} at ${selectedTime}.`,
+          "success"
+        );
+
+        // Close the modal after 2 seconds
+        setTimeout(() => {
+          bookingModal.style.display = "none";
+        }, 2000);
+      });
+    }
+  });
 })();
