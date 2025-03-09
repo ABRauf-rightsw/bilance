@@ -299,24 +299,43 @@
         const email = document.getElementById("email").value;
         const subject = document.getElementById("subject").value;
         const message = document.getElementById("message").value;
-        const selectedDate = datePicker.value;
-        const selectedTime = timeSlot.value;
-
-        if (!name || !email || !selectedDate || !selectedTime) {
+        const selectedDate = document.getElementById("datePicker").value;
+        const selectedTime = document.getElementById("timeSlot").value;
+    
+        if (!name || !email || !selectedDate || !selectedTime || !subject || !message) {
           showBootstrapAlert("Please fill in all required fields!", "danger");
           return;
         }
-
-        showBootstrapAlert(
-          `Booking submitted for ${name} on ${selectedDate} at ${selectedTime}.`,
-          "success"
-        );
-
-        // Close the modal after 2 seconds
-        setTimeout(() => {
-          bookingModal.style.display = "none";
-        }, 2000);
+    
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("subject", subject);
+        formData.append("message", message);
+        formData.append("date", selectedDate);
+        formData.append("time", selectedTime);
+    
+        fetch("php/formsubmission.php", { 
+          method: "POST",
+          body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === "success") {
+            showBootstrapAlert("Booking request sent successfully!", "success");
+            setTimeout(() => {
+              bookingModal.style.display = "none";
+            }, 2000);
+          } else {
+            showBootstrapAlert(data.message, "danger");
+          }
+        })
+        .catch(error => {
+          showBootstrapAlert("An error occurred. Please try again later.", "danger");
+          console.error("Error:", error);
+        });
       });
     }
+    
   });
 })();
