@@ -315,7 +315,7 @@
         formData.append("date", selectedDate);
         formData.append("time", selectedTime);
     
-        fetch("form/appointment.php", { 
+        fetch("forms/appointment.php", { 
           method: "POST",
           body: formData,
         })
