@@ -315,10 +315,11 @@
         formData.append("date", selectedDate);
         formData.append("time", selectedTime);
     
-        fetch("php/formsubmission.php", { 
+        fetch("form/appointment.php", { 
           method: "POST",
           body: formData,
         })
+        
         .then(response => response.json())
         .then(data => {
           if (data.status === "success") {
