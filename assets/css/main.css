@@ -252,7 +252,7 @@ h6 {
 .header .cta-btn:focus {
   color: var(--contrast-color);
   font-size: 13px;
-  padding: 7px 25px;
+  padding: 7px 10px;
   margin: 0 0 0 30px;
   border-radius: 4px;
   transition: 0.3s;
@@ -275,7 +275,7 @@ h6 {
   .header .cta-btn {
     order: 2;
     margin: 0 15px 0 0;
-    padding: 6px 15px;
+    padding: 6px 2px;
   }
 
   .header .navmenu {
