@@ -215,7 +215,7 @@
     // Modal Elements
     const bookingModal = document.getElementById("bookingModal");
     const closeModal = document.querySelector(".close");
-    const bookConsultationBtn = document.querySelector(".cta-btn");
+    const bookConsultationBtn = document.querySelector(".btn-get-started");
     const datePicker = document.getElementById("datePicker");
     const timeSlots = document.getElementById("timeSlots");
     const userDetails = document.getElementById("userDetails");
