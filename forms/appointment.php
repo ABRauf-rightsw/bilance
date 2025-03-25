@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Server settings
         $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.yourmailserver.com';                // Set the SMTP server to send through (e.g., Gmail, SendGrid)
+        $mail->Host = 'smtp.gamil.com';                // Set the SMTP server to send through (e.g., Gmail, SendGrid)
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = 'itsabdulrightsoft@gmail.com';           // SMTP username (your email address)
         $mail->Password = 'abdulrauf12345';               // SMTP password (your email password)
